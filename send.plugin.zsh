@@ -25,4 +25,9 @@ send() {
   push
 }
 
-
+lock() {
+  local msg="${@: -1}"
+  local files=("${@:1:$#-1}")
+  git add "${files[@]}"
+  git commit -m "$msg"
+}
